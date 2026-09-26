@@ -14,9 +14,11 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/reset.h>
 
-/* Corne Cherry v3, per half: 6 WS2812B underglow, then 21 SK6812MINI-E per-key. */
+/* Corne Cherry v3, per half. The 6 WS2812B underglow LEDs are bypassed with a
+ * wire, so only the 21 SK6812MINI-E per-key LEDs remain in the chain.
+ */
 &led_strip {
-    chain-length = <27>;
+    chain-length = <21>;
 };
 
 / {
