@@ -69,6 +69,14 @@ include:
     shield: corne_right nice_oled
     cmake-args: -DCONFIG_ZMK_KEYBOARD_NAME=\"Corne_Oled_RGB\"
     artifact-name: nice_corne_right_oled
+
+    # Diagnostic build: prints boot logs over USB serial instead of exposing
+    # ZMK Studio. Log processing is delayed so early display init is not missed.
+  - board: nice_nano_v2
+    shield: corne_left nice_oled
+    cmake-args: -DCONFIG_ZMK_KEYBOARD_NAME=\"Corne_Oled_RGB\" -DCONFIG_LOG_PROCESS_THREAD_STARTUP_DELAY_MS=8000
+    artifact-name: nice_corne_left_oled_logging
+    snippet: zmk-usb-logging
     ### nice_oled END ###
 
 
