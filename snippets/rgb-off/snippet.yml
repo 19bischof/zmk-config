@@ -1,0 +1,3 @@
+name: rgb-off
+append:
+  EXTRA_CONF_FILE: rgb-off.conf
