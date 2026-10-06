@@ -59,16 +59,19 @@ include:
     ### nice_oled START ###
     # nice!nano v2 with the standard SSD1306 OLED and the 21-LED per-key chain.
     # Left half is the BLE central. Right half is the peripheral.
-    # RGB is off: add "rgb-config" back to the snippet lines to re-enable it.
+    # The LED driver stays compiled in even when the lighting is meant to be
+    # off, so it actively writes black. Without it P0.06 floats and the strip
+    # latches noise. Brightness lives in snippets/rgb-config/rgb-config.conf.
   - board: nice_nano_v2
     shield: corne_left nice_oled
     cmake-args: -DCONFIG_ZMK_KEYBOARD_NAME=\"Corne_Oled_RGB\"
     artifact-name: nice_corne_left_oled
-    snippet: studio-rpc-usb-uart
+    snippet: rgb-config studio-rpc-usb-uart
   - board: nice_nano_v2
     shield: corne_right nice_oled
     cmake-args: -DCONFIG_ZMK_KEYBOARD_NAME=\"Corne_Oled_RGB\"
     artifact-name: nice_corne_right_oled
+    snippet: rgb-config
 
     # Diagnostic build: prints boot logs over USB serial instead of exposing
     # ZMK Studio. Log processing is delayed so early display init is not missed.
